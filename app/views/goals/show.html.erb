@@ -1,0 +1,9 @@
+<% flash.each do |type, msg| %>
+  <%= msg if type = :errors %>
+<% end %>
+<h2><%=@goal.author.username%></h2>
+<% access = @goal.private? ? ('private') : ('public') %>
+<p><%= access %></p>
+<% status = @goal.completed? ? ('Complete') : ('Incomplete') %>
+<p><%= status %></p>
+<%= @goal.text %>

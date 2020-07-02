@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Goalsapp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <header>
+      <% if logged_in? %>
+        <h2>Welcome <%= current_user.username %></h2>
+        <a value="Log Out" href=<%= session_url(current_user) %> data-method='delete'>Log Out</a>
+      <% else %>
+      <% end %>
+    </header>
+    <% flash.each do |type, msg| %>
+      <%= msg %>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

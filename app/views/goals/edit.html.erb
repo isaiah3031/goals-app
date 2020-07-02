@@ -1,0 +1,35 @@
+<h2>Edit Goal</h2>
+<% flash.each do |type, msg| %>
+  <%= msg %>
+<% end %>
+<form action=<%= goal_url %> method="post">
+  <input type="hidden" name="_method" value="patch">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input id='goal_text' type='text' name='[goal][text]' value=<%= @goal.text %>>
+  <label>Complete:</label>
+  <input id='complete'
+    value='true' 
+    name='[goal][completed?]' 
+    type='radio'>
+  <label>Incomplete:</label>
+  <input id='incomplete'
+    value='false' 
+    name='[goal][completed?]' 
+    type='radio'>
+  <br>
+  <label>Public:</label>
+  <input id='public'
+    value='true' 
+    name='[goal][private?]' 
+    type='radio'>
+  <label>Private:</label>
+  <input id='private'
+    value='false' 
+    name='[goal][private?]' 
+    type='radio'>
+  <br>
+  <input type='submit' value='submit'/>
+  <% if current_user.id == @goal.author.id %>
+    <a href=<%= goal_url(@goal.id) %> data-method="delete" >DELETE POST</a>
+  <% end %>
+</form>

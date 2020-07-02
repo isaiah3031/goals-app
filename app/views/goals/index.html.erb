@@ -1,0 +1,10 @@
+<h2>All Goals</h2>
+<% Goal.all.each do |goal| %>
+  <% next if goal.id < Goal.count - 10%>
+  <% if !goal.private? || goal.author_id == current_user.id%>
+    <p><%= goal.author.username %></p>
+    <p><%= goal.text %></p>
+    <p><%= goal.private? ? ('private') : ('public') %></p>
+    <p><%= goal.completed? ? ('completed') : ('incomplete') %></p>
+  <% end %>
+<% end %>
