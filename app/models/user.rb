@@ -11,6 +11,8 @@ class User < ApplicationRecord
     foreign_key: :author_id,
     class_name: :Goal
 
+  has_many :comments, as: :comment
+  
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(@password)
@@ -34,6 +36,7 @@ class User < ApplicationRecord
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     return user if !!user && user.password?(password)
+
     nil
   end
 

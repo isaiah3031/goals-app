@@ -7,7 +7,6 @@ class CreateUserComments < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
-    add_index :user_comments, :author_id
-    add_index :user_comments, :subject_id
+
   end
 end

@@ -7,7 +7,6 @@ class CreateGoalComments < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
-    add_index :goal_comments, :author_id
-    add_index :goal_comments, :subject_id
+   
   end
 end
